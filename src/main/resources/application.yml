@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: spring-ai-demo
+server:
+  servlet:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+# 查看交互日志
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          client: DEBUG
+        ai:
+          chat:
+            client:
+              advisor: DEBUG
