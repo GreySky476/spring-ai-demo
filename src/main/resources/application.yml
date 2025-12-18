@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: local
   application:
     name: spring-ai-demo
 server:
