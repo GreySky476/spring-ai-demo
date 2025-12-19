@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import org.jspecify.annotations.Nullable;
+import org.springframework.ai.chat.client.AdvisorParams;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.Generation;
@@ -36,7 +37,8 @@ public class StructuredOutputConverterService {
     @PostConstruct
     public void init() {
 //        beanStructOutputConverter();
-        beanStructOutputConverterByOrder();
+//        beanStructOutputConverterByOrder();
+        nativeStructOutputConverter();
     }
 
     /**
@@ -137,6 +139,37 @@ public class StructuredOutputConverterService {
         );
 
         Flux<String> content = client.prompt(prompt).stream().content();
+        content.subscribe(System.out::print);
+    }
+
+    /**
+     * 使用 ai 本身结构化输出
+     */
+    public void nativeStructOutputConverter() {
+
+        String userInput = """
+                请生成一个 JSON 格式的数据，包含三个字段：name, message, dateTime
+                {end}
+                """;
+
+        HashMap<String, @Nullable Object> hashMap = Maps.newHashMap();
+        // 提示 ai 使用 json 格式返回数据
+        hashMap.put("end", "回答的文字将使用中文，其它保持不变");
+
+        // 提示词构建
+        Prompt prompt = new Prompt(
+                PromptTemplate.builder()
+                        .template(userInput)
+                        .variables(hashMap)
+                        .build()
+                        .createMessage()
+        );
+        Flux<String> content = client.prompt(prompt)
+                // 使用 ai 本身的结构化进行输出，可以手动指定，也可以在初始化 client 直接添加
+                .advisors(AdvisorParams.ENABLE_NATIVE_STRUCTURED_OUTPUT)
+                .stream()
+                .content();
+
         content.subscribe(System.out::print);
     }
 

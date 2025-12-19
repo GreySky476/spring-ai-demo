@@ -1,6 +1,7 @@
 package spring.ai.example.spring_ai_demo.configuartion;
 
 import com.google.common.collect.Lists;
+import org.springframework.ai.chat.client.AdvisorParams;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
@@ -40,6 +41,8 @@ public class ChatClientConfig {
                 // 上下文敏感词添加拦截
                 .defaultAdvisors(SafeGuardAdvisor.builder().sensitiveWords(Lists.newArrayList("越权", "跳过")).build())
                 .defaultAdvisors(SimpleLoggerAdvisor.builder().build())
+                // 本机结构化输出
+//                .defaultAdvisors(AdvisorParams.ENABLE_NATIVE_STRUCTURED_OUTPUT)
                 .defaultOptions(OpenAiChatOptions.builder().model("deepseek-ai/DeepSeek-R1-0528-Qwen3-8B").temperature(0.5).build())
                 .build();
         // 元数据，提供上下文信息，可以对当前提问者做标记，适合追溯历史记录
