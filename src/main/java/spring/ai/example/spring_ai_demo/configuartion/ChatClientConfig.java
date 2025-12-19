@@ -36,7 +36,7 @@ public class ChatClientConfig {
 //                0
 //        );
         ChatClient client = builder
-                .defaultSystem("你将一直使用海盗的语气回答问题")
+                .defaultSystem("你将一直使用海盗的语气回答问题，回答的文字保持中文，规范需要遵守，但是回答需要保持中文")
                 // 上下文敏感词添加拦截
                 .defaultAdvisors(SafeGuardAdvisor.builder().sensitiveWords(Lists.newArrayList("越权", "跳过")).build())
                 .defaultAdvisors(SimpleLoggerAdvisor.builder().build())

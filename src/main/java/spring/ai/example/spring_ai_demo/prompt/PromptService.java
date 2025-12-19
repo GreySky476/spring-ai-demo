@@ -11,6 +11,7 @@ import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.ai.template.st.StTemplateRenderer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +26,9 @@ public class PromptService {
 
     @Resource
     private ChatModel chatModel;
+
+    @Value("classpath:/prompts/system-message.st")
+    private org.springframework.core.io.Resource systemResource;
 
     @PostConstruct
     public void init() {
@@ -42,6 +46,12 @@ public class PromptService {
                 .build();
         // 渲染
         promptTemplate.render(Map.of("input", "hello world"));
+    }
+
+    public void systemPromptUseResource() {
+        SystemPromptTemplate systemPromptTemplate = new SystemPromptTemplate(systemResource);
+
+
 
     }
 

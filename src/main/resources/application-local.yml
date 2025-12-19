@@ -3,3 +3,26 @@ spring:
     activate:
       on-profile: local
     import: classpath:openApiKey.yml
+
+ai:
+  assistant:
+    name: GreyModel
+  company:
+    name: GreySql
+  model:
+    version: 1.0.0
+  prompts:
+    base-path: "classpath:/prompts/"
+    system-message: "system-message.st"
+    cache-enabled: true
+    cache-expiration: 3600 # 1小时
+current_date: 2025-12-18
+
+user:
+  role: admin
+
+# String Template 配置
+string-template:
+  delimiter-start: "${"
+  delimiter-end: "}"
+  strict-rendering: true
