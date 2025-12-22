@@ -38,7 +38,7 @@ public class StructuredOutputConverterService {
     public void init() {
 //        beanStructOutputConverter();
 //        beanStructOutputConverterByOrder();
-        nativeStructOutputConverter();
+//        nativeStructOutputConverter();
     }
 
     /**
