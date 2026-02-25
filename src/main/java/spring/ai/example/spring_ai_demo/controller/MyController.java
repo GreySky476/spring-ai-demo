@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import spring.ai.example.spring_ai_demo.advisors.ReReadingAdvisor;
+import spring.ai.example.spring_ai_demo.tool.AiTool;
 
 @RestController
 public class MyController {
@@ -28,7 +29,7 @@ public class MyController {
     @GetMapping("/ai/stream")
     public Flux<String> streamFlux(@RequestParam("userInput") Object userInput) {
         String inputStr = (String) userInput;
-        return this.chatClient.prompt(inputStr).advisors(new ReReadingAdvisor(), SimpleLoggerAdvisor.builder().build()).stream().content();
+        return this.chatClient.prompt(inputStr).advisors(new ReReadingAdvisor(), SimpleLoggerAdvisor.builder().build()).tools(new AiTool()).stream().content();
     }
 
 }

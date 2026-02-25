@@ -25,11 +25,11 @@ public class ChatAdvisorsService {
     private final static Logger logger = LoggerFactory.getLogger(ChatAdvisorsService.class);
 
     @Autowired
-    @Qualifier("deepseekAi")
+//    @Qualifier("deepseekAi")
     private OpenAiApi deepseekAi;
 
     @Autowired
-    @Qualifier("deepseekAiModel")
+//    @Qualifier("deepseekAiModel")
     private OpenAiChatModel baseChatModel;
 
 //    @Autowired

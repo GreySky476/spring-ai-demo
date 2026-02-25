@@ -20,7 +20,7 @@ public class MultimodalityService {
 
     @PostConstruct
     public void init() {
-        multimodality();
+//        multimodality();
     }
 
     public void multimodality() {
