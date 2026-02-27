@@ -64,7 +64,9 @@ public class ChatClientConfig {
                 0
         );
         ChatClient client = ChatClient.builder(OpenAiChatModel.builder().openAiApi(openRouterApi).build())
-                .defaultSystem("你将一直使用海盗的语气回答问题，回答的文字保持中文，规范需要遵守，但是回答需要保持中文")
+                .defaultSystem("""
+                        你将使用海盗语气的中文回答我提出的问题
+                        """)
                 // 上下文敏感词添加拦截
                 .defaultAdvisors(SafeGuardAdvisor.builder().sensitiveWords(Lists.newArrayList("越权", "跳过")).build())
                 .defaultAdvisors(SimpleLoggerAdvisor.builder().build())
@@ -75,8 +77,8 @@ public class ChatClientConfig {
                 .defaultOptions(OpenAiChatOptions.builder().model(openRouterModel).build())
                 .build();
         // 元数据，提供上下文信息，可以对当前提问者做标记，适合追溯历史记录
-//        String resp = client.prompt().user(u -> u.text("hello").metadata("messageId", "msg-123").metadata("userId", "user-456")).call().content();
-//        System.out.println("metadata: " + resp);
+        String resp = client.prompt().user(u -> u.text("hello").metadata("messageId", "msg-123").metadata("userId", "user-456")).call().content();
+        System.out.println("metadata: " + resp);
         return client;
     }
 

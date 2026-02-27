@@ -14,8 +14,4 @@ public class AiTool {
         return LocalDateTime.now().atZone(LocaleContextHolder.getTimeZone().toZoneId()).toString();
     }
 
-    public static void main(String[] args) {
-        System.out.println(new AiTool().getCurrentTime());
-    }
-
 }
