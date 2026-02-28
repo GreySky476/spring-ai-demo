@@ -1,0 +1,28 @@
+server:
+  port: 8082
+spring:
+  main:
+    web-application-type: none
+  config:
+    # Set credentials for your Anthropic API account
+    import: classpath:openApiKey.yml
+
+    # Connect to the MCP Weather Server using streamable-http client transport
+    mcp:
+      client:
+        streamable-http:
+          connections:
+            my-weather-server:
+              url: http://localhost:8081
+
+# 设置 Spring AI 的日志级别为 DEBUG
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          client: DEBUG
+        ai:
+          chat:
+            client:
+              advisor: DEBUG

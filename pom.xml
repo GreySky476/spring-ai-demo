@@ -30,7 +30,6 @@
 		<java.version>21</java.version>
 		<spring-ai.version>1.1.2</spring-ai.version>
 		<google.guava.version>33.5.0-jre</google.guava.version>
-		<spring-ai-bom.version>1.0.0</spring-ai-bom.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -40,13 +39,6 @@
 		<dependency>
 			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-starter-model-openai</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.ai</groupId>
-			<artifactId>spring-ai-bom</artifactId>
-			<version>${spring-ai-bom.version}</version>
-			<type>pom</type>
-			<scope>import</scope>
 		</dependency>
 
 		<dependency>

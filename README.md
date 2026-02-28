@@ -7,3 +7,7 @@
 提示词文件加载器
 - 启动项目时动态加载配置文件中的系统提示词，规范系统回答
 
+## MCP Inspector
+```shell
+npx @modelcontextprotocol/inspector
+```

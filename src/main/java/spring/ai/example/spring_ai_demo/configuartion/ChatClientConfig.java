@@ -49,13 +49,13 @@ import spring.ai.example.spring_ai_demo.tool.AiTool;
 @Configuration
 public class ChatClientConfig {
 
-    @Value("${siliconflow.api-key}")
-    private String siliconflowApi;
+//    @Value("${siliconflow.api-key}")
+//    private String siliconflowApi;
 
-    @Value("${siliconflow.base-url}")
-    private String siliconflowBaseUrl;
+//    @Value("${siliconflow.base-url}")
+//    private String siliconflowBaseUrl;
 
-    @Value("${openRouter.model:arcee-ai/trinity-large-preview:free}")
+    @Value("${openRouter.model:z-ai/glm-4.5-air:free}")
     private String openRouterModel;
 
     @Value("${openRouter.openai.api-key}")
