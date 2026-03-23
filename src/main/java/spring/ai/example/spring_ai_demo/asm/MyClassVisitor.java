@@ -40,6 +40,9 @@ public class MyClassVisitor extends ClassVisitor implements Opcodes {
         public void visitCode() {
             super.visitCode();
             // 插入代码
+            /*
+            获取静态方法 System.out.println
+             */
             mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
             mv.visitLdcInsn("start");
             mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
